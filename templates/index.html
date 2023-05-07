@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahn Nae-sang Number</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <h1>Ahn Nae-sang Number</h1>
+    <img src="/static/im.jpeg" alt="안내상 배우 이미지" style="max-width: 100%; height: auto;">
+    <form action="/find_kevin_bacon_number/" method="post">
+        <label for="actor_name">Actor Name(in English):</label>
+        <input type="text" id="actor_name" name="actor_name" required>
+        <button type="submit">Find Path</button>
+    </form>
+    {% if path %}
+    <h2>Path:</h2>
+    <p>{{ path }}</p>
+    {% endif %}
+
+    <script>
+        $(function() {
+            $.getJSON("/actors", function(data) {
+                $("#actor_name").autocomplete({
+                    source: data.actors
+                });
+            });
+        });
+    </script>
+</body>
+</html>
