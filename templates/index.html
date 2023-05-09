@@ -23,7 +23,7 @@
 
     <script>
         $(function() {
-            $.getJSON("/actors", function(data) {
+            $.getJSON("/proj/nn/actors", function(data) {
                 $("#actor_name").autocomplete({
                     source: data.actors
                 });
